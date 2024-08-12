@@ -16,9 +16,9 @@
       {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
-            python312
-            poetry
+            maven
             jdk
+            bash
           ];
         };
       }

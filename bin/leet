@@ -1,0 +1,11 @@
+#!/bin/sh
+
+SCRIPT_DIR=$(cd "$(dirname "$0")" && cd ../ && pwd)
+TARGET="$SCRIPT_DIR/target"
+
+if [ ! -f "$TARGET/leet-1.0-jar-with-dependencies.jar" ]; then
+  echo "Building project..."
+  mvn package
+fi
+
+java -cp "$TARGET"/leet-1.0-jar-with-dependencies.jar com.leet.App "$@"

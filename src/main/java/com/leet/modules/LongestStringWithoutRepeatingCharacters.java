@@ -1,11 +1,11 @@
 package com.leet.modules;
 
-import com.leet.interfaces.SolutionInterface;
+import com.leet.interfaces.Solution;
 
 import java.util.HashSet;
 
-public class LongestStringWithoutRepeatingCharacters implements SolutionInterface {
-  public void solve(String[] args) {
+public class LongestStringWithoutRepeatingCharacters implements Solution {
+  public String solve(String[] args) {
     String s = args[0];
     Integer maxLength = 0;
     Integer left = 0;
@@ -26,17 +26,21 @@ public class LongestStringWithoutRepeatingCharacters implements SolutionInterfac
       Character rightChar = s.charAt(right);
       while (!charSet.contains(rightChar)) {
         charSet.add(rightChar);
-        if (right < s.length()) {
+        if (right + 1 < s.length()) {
           right += 1;
           rightChar = s.charAt(right);
         }
-        ;
+        if (charSet.size() > maxLength) {
+          maxLength = charSet.size();
+        }
       }
 
       charSet.remove(leftChar);
+      left += 1;
       if (right >= left) {
         right += 1;
       }
     }
+    return maxLength.toString();
   };
 }

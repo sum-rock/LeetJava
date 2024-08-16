@@ -2,21 +2,36 @@ package com.leet.subcommands;
 
 import java.util.HashMap;
 
-import com.leet.Globals;
-
+import de.vandermeer.asciitable.AsciiTable;
+import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 import picocli.CommandLine.Command;
+
+import com.leet.Globals;
 
 @Command(name = "list", description = "List of puzzles")
 public class List implements Runnable {
 
   private Globals global = Globals.get_instance();
 
-  public void run() {
-    System.out.println("List of puzzles");
+  private AsciiTable addRow(AsciiTable table, Globals.PuzzleFeatures feat) {
+    table.addRule();
+    table.addRow(feat.title, feat.description, feat.inputs);
+    return table;
+  }
 
-    for (HashMap.Entry<String, Globals.PuzzleFeatures> entry : global.registry.entrySet()) {
-      System.out.println(entry.getKey());
-    }
+  public void run() {
+    System.out.println("Puzzle Features:");
+    AsciiTable table = new AsciiTable();
+    table.addRule();
+    table.addRow("Title", "Description", "Inputs");
+
+    global.registry.forEach((k, v) -> {
+      addRow(table, v);
+    });
+
+    table.addRule();
+    table.setTextAlignment(TextAlignment.LEFT);
+    System.out.println(table.render());
 
   }
 }

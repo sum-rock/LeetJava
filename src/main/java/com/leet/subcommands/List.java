@@ -1,7 +1,5 @@
 package com.leet.subcommands;
 
-import java.util.HashMap;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 import picocli.CommandLine.Command;

@@ -26,7 +26,7 @@ public class Puzzle implements Runnable {
     System.out.println("Running puzzle: " + puzzle.puzzleName);
 
     Globals globals = Globals.get_instance();
-    Solution solution = globals.registry.get(puzzle.puzzleName);
+    Solution solution = globals.registry.get(puzzle.puzzleName).solution;
     System.out.println(solution.solve(puzzle.inputs));
 
   }

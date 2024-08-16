@@ -3,7 +3,6 @@ package com.leet.subcommands;
 import java.util.HashMap;
 
 import com.leet.Globals;
-import com.leet.interfaces.Solution;
 
 import picocli.CommandLine.Command;
 
@@ -15,7 +14,7 @@ public class List implements Runnable {
   public void run() {
     System.out.println("List of puzzles");
 
-    for (HashMap.Entry<String, Solution> entry : global.registry.entrySet()) {
+    for (HashMap.Entry<String, Globals.PuzzleFeatures> entry : global.registry.entrySet()) {
       System.out.println(entry.getKey());
     }
 

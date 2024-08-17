@@ -3,6 +3,7 @@ package com.leet;
 import java.util.HashMap;
 
 import com.leet.modules.LongestStringWithoutRepeatingCharacters;
+import com.leet.modules.LongestPalindromicSubstring;
 import com.leet.interfaces.Solution;
 
 public final class Globals {
@@ -27,8 +28,15 @@ public final class Globals {
         "longest_string_without_repeates",
         new PuzzleFeatures(
             new LongestStringWithoutRepeatingCharacters(),
-            "Longest String Without Repeating Characters",
+            "Longest String Without Repeats",
             "Given a string, find the length of the longest substring without repeating characters.",
+            "A string"));
+    registry.put(
+        "longest_palindrome",
+        new PuzzleFeatures(
+            new LongestPalindromicSubstring(),
+            "Longest Palindrome",
+            "Given a string, find the longest palindrome.",
             "A string"));
   }
 

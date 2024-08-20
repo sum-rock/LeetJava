@@ -9,7 +9,7 @@ import com.leet.Globals;
 @Command(name = "list", description = "List of puzzles")
 public class List implements Runnable {
 
-  private Globals global = Globals.get_instance();
+  private Globals global = new Globals(false);
 
   private AsciiTable addRow(AsciiTable table, Globals.PuzzleFeatures feat) {
     table.addRule();
@@ -17,7 +17,7 @@ public class List implements Runnable {
     return table;
   }
 
-  public void run() {
+  public void printList() {
     System.out.println("Puzzle Features:");
     AsciiTable table = new AsciiTable();
     table.addRule();
@@ -30,6 +30,9 @@ public class List implements Runnable {
     table.addRule();
     table.setTextAlignment(TextAlignment.LEFT);
     System.out.println(table.render());
+  }
 
+  public void run() {
+    printList();
   }
 }

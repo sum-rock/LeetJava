@@ -1,7 +1,5 @@
 package com.leet.puzzles;
 
-import com.leet.Solution;
-
 public class LongestPalindromicSubstring extends Solution {
 
   public LongestPalindromicSubstring(boolean verbose) {

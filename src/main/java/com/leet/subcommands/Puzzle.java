@@ -1,6 +1,5 @@
 package com.leet.subcommands;
 
-import com.leet.*;
 import com.leet.puzzles.*;
 import java.util.HashMap;
 import picocli.CommandLine.Command;
@@ -11,20 +10,21 @@ import picocli.CommandLine.ArgGroup;
 @Command(name = "puzzle", description = "Run a puzzle")
 public class Puzzle implements Runnable {
 
-  private HashMap<String, Features> registry() {
+  public HashMap<String, Features> registry() {
     HashMap<String, Features> ret = new HashMap<String, Features>();
+    boolean verbose = (puzzle != null) ? puzzle.verbose : false;
 
     ret.put(
         "longest_string_without_repeates",
         new Features(
-            new LongestStringWithoutRepeatingCharacters(puzzle.verbose),
+            new LongestStringWithoutRepeatingCharacters(verbose),
             "Longest String Without Repeats",
             "Given a string, find the length of the longest substring without repeating characters.",
             "A string"));
     ret.put(
         "longest_palindrome",
         new Features(
-            new LongestPalindromicSubstring(puzzle.verbose),
+            new LongestPalindromicSubstring(verbose),
             "Longest Palindrome",
             "Given a string, find the longest palindrome.",
             "A string"));
@@ -48,7 +48,7 @@ public class Puzzle implements Runnable {
 
   static class PuzzleArgs {
     @Parameters(index = "0", description = "Name of the puzzle to run in snake_case")
-    String puzzleName;
+    String name;
 
     @Option(names = { "--inputs" }, split = ",", description = "Inputs for the puzzle")
     String[] inputs;
@@ -61,9 +61,9 @@ public class Puzzle implements Runnable {
   PuzzleArgs puzzle;
 
   public void run() {
-    System.out.println("Running puzzle: " + puzzle.puzzleName);
+    System.out.println("Running puzzle: " + puzzle.name);
 
-    Features features = registry().get(puzzle.puzzleName);
+    Features features = registry().get(puzzle.name);
     if (features == null) {
       System.out.println("Puzzle not found.");
       List listCommand = new List();

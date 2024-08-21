@@ -1,4 +1,4 @@
-package com.leet;
+package com.leet.puzzles;
 
 public abstract class Solution {
   public boolean VERBOSE;

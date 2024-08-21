@@ -1,6 +1,5 @@
 package com.leet.puzzles;
 
-import com.leet.Solution;
 import java.util.HashSet;
 
 public class LongestStringWithoutRepeatingCharacters extends Solution {

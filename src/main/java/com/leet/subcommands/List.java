@@ -4,14 +4,10 @@ import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 import picocli.CommandLine.Command;
 
-import com.leet.Globals;
-
 @Command(name = "list", description = "List of puzzles")
 public class List implements Runnable {
 
-  private Globals global = new Globals(false);
-
-  private AsciiTable addRow(AsciiTable table, Globals.PuzzleFeatures feat) {
+  private AsciiTable addRow(AsciiTable table, Puzzle.Features feat) {
     table.addRule();
     table.addRow(feat.title, feat.description, feat.inputs);
     return table;
@@ -23,7 +19,8 @@ public class List implements Runnable {
     table.addRule();
     table.addRow("Title", "Description", "Inputs");
 
-    global.registry.forEach((k, v) -> {
+    Puzzle puzzle = new Puzzle();
+    puzzle.registry().forEach((k, v) -> {
       addRow(table, v);
     });
 

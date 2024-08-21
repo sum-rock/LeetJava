@@ -1,4 +1,4 @@
-package com.leet.modules;
+package com.leet.puzzles;
 
 import com.leet.Solution;
 

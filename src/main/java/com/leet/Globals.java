@@ -1,7 +1,7 @@
 package com.leet;
 
 import java.util.HashMap;
-import com.leet.modules.*;
+import com.leet.puzzles.*;
 
 public final class Globals {
   public Globals(boolean verbose) {

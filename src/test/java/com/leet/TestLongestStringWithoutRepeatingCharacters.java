@@ -15,23 +15,21 @@ public class TestLongestStringWithoutRepeatingCharacters extends TestCase {
     return new TestSuite(TestLongestStringWithoutRepeatingCharacters.class);
   }
 
+  private LongestStringWithoutRepeatingCharacters puzzle = new LongestStringWithoutRepeatingCharacters(false);
+
   public void testDvd() {
-    LongestStringWithoutRepeatingCharacters puzzle = new LongestStringWithoutRepeatingCharacters(false);
     assertEquals(puzzle.solve(new String[] { "dvdfd" }), "3");
   }
 
   public void testAllRepeating() {
-    LongestStringWithoutRepeatingCharacters puzzle = new LongestStringWithoutRepeatingCharacters(false);
     assertEquals(puzzle.solve(new String[] { "aaaaaaa" }), "1");
   }
 
   public void testSingleCharacter() {
-    LongestStringWithoutRepeatingCharacters puzzle = new LongestStringWithoutRepeatingCharacters(false);
     assertEquals(puzzle.solve(new String[] { "a" }), "1");
   }
 
   public void testBoundaries() {
-    LongestStringWithoutRepeatingCharacters puzzle = new LongestStringWithoutRepeatingCharacters(false);
     assertEquals(puzzle.solve(new String[] { "asdfodfq" }), "5");
     assertEquals(puzzle.solve(new String[] { "abcabcaql" }), "5");
   }

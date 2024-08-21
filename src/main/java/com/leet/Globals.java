@@ -1,10 +1,7 @@
 package com.leet;
 
 import java.util.HashMap;
-
-import com.leet.modules.LongestStringWithoutRepeatingCharacters;
-import com.leet.modules.LongestPalindromicSubstring;
-import com.leet.interfaces.Solution;
+import com.leet.modules.*;
 
 public final class Globals {
   public Globals(boolean verbose) {

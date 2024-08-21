@@ -1,4 +1,4 @@
-package com.leet.interfaces;
+package com.leet;
 
 public abstract class Solution {
   public boolean VERBOSE;

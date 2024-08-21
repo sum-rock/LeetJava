@@ -1,6 +1,6 @@
 package com.leet.modules;
 
-import com.leet.interfaces.Solution;
+import com.leet.Solution;
 
 public class LongestPalindromicSubstring extends Solution {
 

@@ -1,12 +1,9 @@
 package com.leet;
 
-import com.leet.subcommands.List;
-import com.leet.subcommands.Puzzle;
-
+import java.util.concurrent.Callable;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
-
-import java.util.concurrent.Callable;
+import com.leet.subcommands.*;
 
 @Command(name = "leet", mixinStandardHelpOptions = true, version = "leet 1.0", subcommands = { Puzzle.class,
     List.class })

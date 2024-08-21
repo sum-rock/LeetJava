@@ -1,8 +1,6 @@
 package com.leet.subcommands;
 
-import com.leet.interfaces.Solution;
-import com.leet.Globals;
-
+import com.leet.*;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;

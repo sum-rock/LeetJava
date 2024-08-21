@@ -1,10 +1,13 @@
-package com.leet.modules;
-
-import com.leet.interfaces.Solution;
+package com.leet.puzzles;
 
 import java.util.HashSet;
 
-public class LongestStringWithoutRepeatingCharacters implements Solution {
+public class LongestStringWithoutRepeatingCharacters extends Solution {
+
+  public LongestStringWithoutRepeatingCharacters(boolean verbose) {
+    super(verbose);
+  }
+
   public String solve(String[] args) {
     String s = args[0];
     Integer maxLength = 0;
@@ -14,11 +17,11 @@ public class LongestStringWithoutRepeatingCharacters implements Solution {
 
     while (left < s.length()) {
       Character leftChar = s.charAt(left);
-      System.out.println("CharSet: " + charSet);
+      logAttr("CharSet", charSet.toString());
 
       if (!charSet.contains(leftChar)) {
         charSet.add(leftChar);
-        System.out.println("Adding Left: " + leftChar);
+        logAttr("Adding Left", leftChar.toString());
       }
 
       if (right >= s.length()) {
@@ -29,7 +32,7 @@ public class LongestStringWithoutRepeatingCharacters implements Solution {
       Character rightChar = s.charAt(right);
       while (!charSet.contains(rightChar)) {
         charSet.add(rightChar);
-        System.out.println("Adding Right: " + rightChar);
+        logAttr("Adding Right", String.valueOf(rightChar));
 
         if (right + 1 < s.length()) {
           right += 1;
@@ -37,12 +40,12 @@ public class LongestStringWithoutRepeatingCharacters implements Solution {
         }
         if (charSet.size() > maxLength) {
           maxLength = charSet.size();
-          System.out.println("New Max Size: " + maxLength);
+          logAttr("New Max Size", String.valueOf(maxLength));
         }
       }
 
-      System.out.println("Final CharSet: " + charSet);
-      System.out.println("=".repeat(20));
+      logAttr("Final CharSet", charSet.toString());
+      logThickLine();
 
       charSet.remove(leftChar);
       left += 1;

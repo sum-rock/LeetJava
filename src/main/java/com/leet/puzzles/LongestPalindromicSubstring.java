@@ -1,8 +1,10 @@
-package com.leet.modules;
+package com.leet.puzzles;
 
-import com.leet.interfaces.Solution;
+public class LongestPalindromicSubstring extends Solution {
 
-public class LongestPalindromicSubstring implements Solution {
+  public LongestPalindromicSubstring(boolean verbose) {
+    super(verbose);
+  }
 
   public String solve(String[] args) {
     String s = args[0];
@@ -19,12 +21,12 @@ public class LongestPalindromicSubstring implements Solution {
       if (distance(oddRange) > cur) {
         l = oddRange[0];
         r = oddRange[1];
-        log("Best candidate Found!", s.substring(l, r + 1));
+        logAttr("Best candidate Found!", s.substring(l, r + 1));
       }
       if (distance(evenRange) > cur) {
         l = evenRange[0];
         r = evenRange[1];
-        log("Best candidate Found!", s.substring(l, r + 1));
+        logAttr("Best candidate Found!", s.substring(l, r + 1));
       }
     }
 
@@ -69,9 +71,5 @@ public class LongestPalindromicSubstring implements Solution {
     } else {
       return false;
     }
-  }
-
-  private void log(String title, String value) {
-    System.out.println(title + ": " + value);
   }
 }

@@ -70,7 +70,7 @@ public class Puzzle implements Runnable {
       listCommand.printList();
 
     } else {
-      System.out.println(features.solution.solve(puzzle.inputs));
+      System.out.println("Results: " + features.solution.solve(puzzle.inputs));
     }
 
   }

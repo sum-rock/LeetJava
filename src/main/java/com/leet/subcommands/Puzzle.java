@@ -1,6 +1,8 @@
 package com.leet.subcommands;
 
 import com.leet.*;
+import com.leet.puzzles.*;
+import java.util.HashMap;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
@@ -8,6 +10,41 @@ import picocli.CommandLine.ArgGroup;
 
 @Command(name = "puzzle", description = "Run a puzzle")
 public class Puzzle implements Runnable {
+
+  private HashMap<String, Features> registry() {
+    HashMap<String, Features> ret = new HashMap<String, Features>();
+
+    ret.put(
+        "longest_string_without_repeates",
+        new Features(
+            new LongestStringWithoutRepeatingCharacters(puzzle.verbose),
+            "Longest String Without Repeats",
+            "Given a string, find the length of the longest substring without repeating characters.",
+            "A string"));
+    ret.put(
+        "longest_palindrome",
+        new Features(
+            new LongestPalindromicSubstring(puzzle.verbose),
+            "Longest Palindrome",
+            "Given a string, find the longest palindrome.",
+            "A string"));
+
+    return ret;
+  }
+
+  public static class Features {
+    public Solution solution;
+    public String title;
+    public String description;
+    public String inputs;
+
+    public Features(Solution solution, String title, String description, String inputs) {
+      this.solution = solution;
+      this.title = title;
+      this.description = description;
+      this.inputs = inputs;
+    }
+  }
 
   static class PuzzleArgs {
     @Parameters(index = "0", description = "Name of the puzzle to run in snake_case")
@@ -26,16 +63,14 @@ public class Puzzle implements Runnable {
   public void run() {
     System.out.println("Running puzzle: " + puzzle.puzzleName);
 
-    Globals globals = new Globals(puzzle.verbose);
-    Globals.PuzzleFeatures puzzleFeatures = globals.registry.get(puzzle.puzzleName);
-
-    if (puzzleFeatures == null) {
+    Features features = registry().get(puzzle.puzzleName);
+    if (features == null) {
       System.out.println("Puzzle not found.");
       List listCommand = new List();
       listCommand.printList();
+
     } else {
-      Solution solution = globals.registry.get(puzzle.puzzleName).solution;
-      System.out.println(solution.solve(puzzle.inputs));
+      System.out.println(features.solution.solve(puzzle.inputs));
     }
 
   }
